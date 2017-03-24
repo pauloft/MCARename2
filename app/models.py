@@ -103,4 +103,13 @@ class MCA(object):
         # Write the inspection data in JSON format to a file
         with open(os.path.join(self.data_directory, cfg[INSPECTIONS_DATAFILE]), w) as f:
             json.dump(insp_dict, f)
+
+        results = {
+            'count_inspections' : count_insp, 
+            'insp_too_few_imgs' : insp_too_few_imgs, 
+            'insp_more_than_few_imgs' : insp_more_than_few_imgs,
+            'empty_insp' : empty_insp
+        }
+        with open(os.path.join(self.data_directory, cfg[INSPECTION_RESULTS]), w) as g:
+            json.dump(results, g)
         
